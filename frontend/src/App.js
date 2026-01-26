@@ -1,13 +1,33 @@
+import React, { useEffect, useState } from "react";
+
 function App() {
+	  const [backendStatus, setBackendStatus] = useState("Loading...");
+
+	  useEffect(() => {
+		      fetch("http://3.93.165.204:5000/api/health")
+		        .then((res) => res.json())
+		        .then((data) => {
+				        setBackendStatus(data.message);
+				      })
+		        .catch((err) => {
+				        setBackendStatus("Backend not reachable");
+				      });
+		    }, []);
+
 	  return (
-		      <div style={{ textAlign: "center", marginTop: "60px" }}>
-		        <h1> Three Tier Application</h1>
-		        <p>Frontend: React JS</p>
-		        <p>Backend: Node.js</p>
-		        <p>Database: MongoDB</p>
+		      <div style={{ padding: "50px", fontFamily: "Arial" }}>
+		        <h1>Three Tier Application</h1>
+
+		        <h3>Frontend: React JS</h3>
+		        <h3>Backend: Node.js</h3>
+		        <h3>Database: MongoDB</h3>
+
+		        <hr />
+
+		        <h2>Backend Status:</h2>
+		        <p>{backendStatus}</p>
 		      </div>
 		    );
 }
 
 export default App;
-
