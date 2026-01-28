@@ -4,7 +4,7 @@ function App() {
 	  const [backendStatus, setBackendStatus] = useState("Loading...");
 
 	  useEffect(() => {
-		      fetch("http://3.93.165.204:5000/api/health")
+		      fetch("/api/health")
 		        .then((res) => res.json())
 		        .then((data) => {
 				        setBackendStatus(data.message);
