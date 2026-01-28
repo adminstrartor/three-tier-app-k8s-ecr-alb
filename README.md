@@ -339,7 +339,6 @@ git commit -m "Added EKS deployment manifests and fixed backend/frontend"
 git pull --rebase origin main
 git push origin main
 ```
-
 ---
 
 # Author
